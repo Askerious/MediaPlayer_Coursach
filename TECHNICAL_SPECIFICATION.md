@@ -43,15 +43,104 @@
 
 ---
 ## 3. Структура базы данных
-### Таблица 1: Трек
+### Таблица 1: Track
 **Описание:** Хранит информацию о треке
 **Поля:**
 - `Id` (int, PK)
 - `Title` (string)
 - `Duration` (int)
-- `isFavorite` (bool)
+- `isFavorite` (bool) 
 - `Path` (string)
 **Связи:**
-### Таблица 2: Плейлист 
-### Таблица 3: 
-### Таблица 4: 
+- Один-ко-многим с таблицей PlaylistTracks 
+
+### Таблица 2: Playlist
+**Поля:**
+- `Id` (int, PK)
+- `Name` (string)
+- ``
+**Связи:**
+- Один-ко-многим с таблицей PlaylistTracks
+
+### Таблица 3: PlaylistTracks
+**Поля:**
+- `Id` (int, PK)
+- `PlaylistId` (int, FK -> `Playlist.Id`) 
+- `TrackId` (int, FK -> `Track.Id`)
+**Связи:**
+- FK `PlaylistId` -> `Playlist.Id`
+- FK `TrackId` -> `Track.Id`
+
+### Таблица 4: User
+**Поля:**
+- `Id` (int, PK)
+- `Username` (string)
+- `Password` (string)
+**Связи:**
+- Один-ко-многим с таблицей Payment
+
+### Таблица 5: Payment
+**Поля:**
+- `Id` (int, PK)
+- `UserId` (int, FK -> `User.Id`)
+- `Tarrif` (string)
+- `CreatedAt`(DateTime)
+**Связи:**
+- FK `UserId` -> `User.Id`
+
+--- 
+## 4. Основные формы приложения
+#### Форма 1: MainWindow
+
+**Назначение:** Главная форма приложения для управления медиатекой
+
+**Элементы управления:**
+- ToolBar `Menu` — Кнопки: `Импорт`, `Импорт Альбома`, `Плейлисты`
+- DataGrid `Tracks` — Колонки: `Название`, `Продолжительность`,  `Избранное` (Кнопка)
+- UserControl - Плеер (Пауза, следующий/предыдущий трек, ползунок, громкость)
+
+**Действия:**
+- Двойной клик по треку — Проигрывание трека
+- Кнопка "Импорт" — Открывает `ImportWindow`
+- Кнопка "Импорт Альбома" — Открывает `ImportAlbumWindow`
+- Кнопка "Плейлисты" — Открывает `PlaylistsWindow`
+
+#### Форма 2: ImportWindow
+**Назначение:** Импорт файла/папки рекурсивно в медиатеку
+
+**Элементы управления:**
+- TextBox `PathToFile` — Путь до файла/папки
+- Button `BrowseButton`
+- Button `ImportButton`
+
+**Действия:**
+- Кнопка "Импорт" — Запускает функцию импорта
+- Кнопка "Обзор" —  Выбор файла/папки
+
+#### Форма 3: ImportAlbumWindow
+**Назначение:** Импорт папки в медиатеку как плейлист
+
+**Элементы управления:**
+- TextBox `PathToFile` — Путь до папки
+- TextBox `PlaylistName` — Имя плейлиста
+- Button `BrowseButton`
+- Button `ImportButton`
+
+**Действия:**
+- Кнопка "Импорт" — Запускает функцию импорта
+- Кнопка "Обзор" —  Выбор файла/папки
+
+#### Форма 4: PlaylistsWindow
+**Назначение:** Просмотр и управление плейлистами
+
+**Элементы управления:**
+- ListBox `PlaylistsList`
+- DataGrid `PlaylistTrackGrid`
+- Button `CreatePlaylist`
+- Button `DeletePlaylist`
+- Button `ChangePlaylist`
+- Button `AddToPlaylist`
+
+**Действия:**
+- Кнопка "Создать плейлист" — Запускает функцию создания 
+- Кнопка "Обзор" —  Выбор файла/папки
