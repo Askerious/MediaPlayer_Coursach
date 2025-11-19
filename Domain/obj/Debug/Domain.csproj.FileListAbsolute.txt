@@ -4,3 +4,9 @@ C:\DeminCoursach\MediaPlayer_Coursach\Domain\obj\Debug\Domain.csproj.AssemblyRef
 C:\DeminCoursach\MediaPlayer_Coursach\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\DeminCoursach\MediaPlayer_Coursach\Domain\obj\Debug\Domain.dll
 C:\DeminCoursach\MediaPlayer_Coursach\Domain\obj\Debug\Domain.pdb
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Domain\bin\Debug\Domain.dll
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Domain\bin\Debug\Domain.pdb
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Domain\obj\Debug\Domain.csproj.AssemblyReference.cache
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Domain\obj\Debug\Domain.dll
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Domain\obj\Debug\Domain.pdb

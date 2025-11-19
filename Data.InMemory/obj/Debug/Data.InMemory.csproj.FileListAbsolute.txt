@@ -1,0 +1,11 @@
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.InMemory.dll
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.InMemory.pdb
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.Interfaces.dll
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Domain.dll
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.Interfaces.pdb
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Domain.pdb
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.csproj.AssemblyReference.cache
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.csproj.CoreCompileInputs.cache
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InM.1D84DFE1.Up2Date
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.dll
+C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.pdb
