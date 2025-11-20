@@ -16,14 +16,14 @@
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Путь до файла" Grid.Row="0" Grid.Column="0" Margin="10 0 0 0"/>
-        <TextBox Margin="10 20 10 10"/>
+        <TextBlock Text="Путь до файла" Grid.Row="0" Grid.Column="0" Margin="10 5 0 0"/>
+        <TextBox Name="FileTextBox" Margin="10 20 10 10"/>
 
-        <Button Content="Обзор" Grid.Row="0" Grid.Column="1" Margin="10 20 10 10"/>
+        <Button Click="Browse" Content="Обзор" Grid.Row="0" Grid.Column="1" Margin="10 20 10 10"/>
 
-        <TextBlock Text="Импортировать как" Grid.Row="1" Grid.Column="0" Margin="10 0 0 0"/>
+        <TextBlock Text="Импортировать как" Grid.Row="1" Grid.Column="0" Margin="10 5 0 0"/>
         <ComboBox Grid.Row="1" Grid.Column="0" Margin="10 20 10 10"/>
 
-        <Button Content="Импорт" Grid.Row="1" Grid.Column="1" Margin="10 20 10 10"/>
+        <Button Click="ImportButton" Content="Импорт" Grid.Row="1" Grid.Column="1" Margin="10 20 10 10"/>
     </Grid>
 </Window>

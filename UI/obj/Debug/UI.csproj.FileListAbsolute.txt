@@ -46,3 +46,9 @@ C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\UI\bin\Debug\Data.InMemory
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\UI\bin\Debug\Data.Interfaces.dll
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\UI\bin\Debug\Data.InMemory.pdb
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\UI\bin\Debug\Data.Interfaces.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Data.InMemory.dll
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Data.Interfaces.dll
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Data.InMemory.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Data.Interfaces.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\ImportWindow.g.cs
+C:\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\ImportWindow.baml

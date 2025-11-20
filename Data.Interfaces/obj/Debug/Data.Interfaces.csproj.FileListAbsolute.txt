@@ -7,3 +7,12 @@ C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Int.E6BA395F.Up2Date
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Interfaces.dll
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Interfaces.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\bin\Debug\Data.Interfaces.dll
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\bin\Debug\Data.Interfaces.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\bin\Debug\Domain.dll
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\bin\Debug\Domain.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Interfaces.csproj.AssemblyReference.cache
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Interfaces.csproj.CoreCompileInputs.cache
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Int.E6BA395F.Up2Date
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Interfaces.dll
+C:\DeminCoursach\MediaPlayer_Coursach\Data.Interfaces\obj\Debug\Data.Interfaces.pdb

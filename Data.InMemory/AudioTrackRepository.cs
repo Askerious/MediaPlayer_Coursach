@@ -26,7 +26,7 @@ namespace Data.InMemory
 
         public void Add(AudioTrack track)
         {
-            var newTrack= new AudioTrack(track.Title, track.Artist, track.Duration, track.IsFavorite, track.FilePath);
+            var newTrack= new AudioTrack(track.Title, track.Artist, track.Cover, track.Duration, track.IsFavorite, track.FilePath);
             newTrack.Id = GetNextId();
             _tracks.Add(newTrack);
         }

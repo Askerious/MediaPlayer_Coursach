@@ -3,10 +3,14 @@ using Data.Interfaces;
 using Domain;
 using Microsoft.Win32;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Media;
+using System.Runtime;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,57 +24,141 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using TagLib;
 
 namespace UI
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MediaPlayer player = new MediaPlayer();
         public readonly IAudioTrackRepository _trackRepository = new AudioTrackRepository();
+        public DispatcherTimer _timer;
+        public bool isPlaying = false;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        public double Position
+        {
+            get => player.Position.TotalSeconds;
+            set
+            {
+                player.Position = TimeSpan.FromSeconds(value);
+                OnPropertyChanged();
+            }
+        }
+
+        private double _duration;
+        public double Duration
+        {
+            get => _duration;
+            set
+            {
+                _duration = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double VolumePercent
+        {
+            get => player.Volume * 100;
+            set
+            {
+                player.Volume = Math.Max(0, Math.Min(100, value)) / 100.0;
+                OnPropertyChanged();
+            }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
+            player.MediaOpened += Player_MediaOpened;
+            player.MediaEnded += Player_MediaEnded;
+            player.Volume = VolumePercent / 100.0;
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(200);
+            _timer.Tick += TimerTick;
+            _timer.Start();
+
+            RefreshGrid();
+        }
+
+        public void Player_MediaOpened(object sender, EventArgs e)
+        {
+            if (player.NaturalDuration.HasTimeSpan)
+                Duration = player.NaturalDuration.TimeSpan.TotalSeconds;
+            else
+                Duration = 0;
+        }
+        
+        public void Player_MediaEnded(object sender, EventArgs e)
+        {
+            player.Stop();
+            Position = 0;
+        }
+
+        public void TimerTick(object sender, EventArgs e)
+        {
+            if (player.NaturalDuration.HasTimeSpan)
+                Position = player.Position.TotalSeconds;
         }
 
         public void PlayMedia(object sender, EventArgs e)
         {
-            if (dataGrid.SelectedItem is AudioTrack track)
+            if (!(trackListBox.SelectedItem is AudioTrack track)) return;
+
+            if (!isPlaying)
             {
-                player.Open(new Uri(track.FilePath));
+                if (player.Source == null || !player.Source.OriginalString.Equals(track.FilePath))
+                {
+                    player.Stop();
+                    player.Open(new Uri(track.FilePath));
+                }
+
                 player.Play();
+                UpdateCover(track);
+                isPlaying = true;
+                PlayPauseButton.Content = "Pause";
             }
-            
+            else
+            {
+                player.Pause();
+                isPlaying = false;
+                PlayPauseButton.Content = "Play";
+            }
+        }
+
+        public void TrackList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (trackListBox.SelectedItem is AudioTrack track)
+            {
+                UpdateCover(track);
+            }
+        }
+
+        public void UpdateCover(AudioTrack track)
+        {
+            nowPlayingArtist.Text = track.Artist;
+            nowPlayingTitle.Text = track.Title;
+            nowPlayingCover.Source = track.Cover;
         }
 
         //importWindow
         public void LoadTrack(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
-            if (ofd.ShowDialog() == true)
-            {
-                var trackMetadata = File.Create(ofd.FileName);
-                AudioTrack track = ExtractMetadata(trackMetadata, ofd.FileName);
+            AudioTrack track = ImportWindow.Import();
+            if (track != null)
                 _trackRepository.Add(track);
-                RefreshGrid();
-            }
-        }
-
-        public AudioTrack ExtractMetadata(File file, string path)
-        {
-            string title = file.Tag.Title;
-            string artist = file.Tag.FirstPerformer;
-            double duration = file.Properties.Duration.TotalMinutes;
-            bool isFavorite = false;
-
-            return new AudioTrack(title, artist, duration, isFavorite, path);
+            RefreshGrid();
         }
 
         public void RefreshGrid()
         {
-            dataGrid.ItemsSource = _trackRepository.GetAll();
+            trackListBox.ItemsSource = _trackRepository.GetAll();
         }
     }
 }

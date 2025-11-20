@@ -9,3 +9,14 @@ C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Da
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InM.1D84DFE1.Up2Date
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.dll
 C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.InMemory.dll
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.InMemory.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.Interfaces.dll
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Domain.dll
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Data.Interfaces.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\bin\Debug\Domain.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.csproj.AssemblyReference.cache
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.csproj.CoreCompileInputs.cache
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InM.1D84DFE1.Up2Date
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.dll
+C:\DeminCoursach\MediaPlayer_Coursach\Data.InMemory\obj\Debug\Data.InMemory.pdb
