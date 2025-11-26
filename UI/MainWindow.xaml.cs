@@ -181,7 +181,6 @@ namespace UI
             nowPlayingCover.Source = track.Cover;
         }
 
-        //importWindow
         public void LoadTrack(object sender, RoutedEventArgs e)
         {
             //AudioTrack track = ImportWindow.Import();

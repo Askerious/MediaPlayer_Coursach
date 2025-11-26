@@ -12,11 +12,13 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TagLib;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace UI
 {
@@ -42,12 +44,15 @@ namespace UI
 
         public void Browse(object sender, RoutedEventArgs e)
         {
-            var dlg = new 
+            var dlg = new CommonOpenFileDialog();
+            dlg.IsFolderPicker = true;
+            if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
+                FileTextBox.Text = dlg.FileName;
 
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
-            //if (ofd.ShowDialog() == true)
-            //    FileTextBox.Text = ofd.FileName;
+                //OpenFileDialog ofd = new OpenFileDialog();
+                //ofd.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
+                //if (ofd.ShowDialog() == true)
+                //    FileTextBox.Text = ofd.FileName;
         }
 
         public void ImportButton(object sender, RoutedEventArgs e)
@@ -57,7 +62,7 @@ namespace UI
             if (ImportBox.Text == "Файл")
                 ImportSingleFile(FileTextBox.Text);
             else if (ImportBox.Text == "Все файлы в папке")
-                ImportFolder(ImportBox.Text);
+                ImportFolder(FileTextBox.Text);
             else if (FileTextBox.Text == "Плейлист") return;
         }
 
@@ -73,14 +78,19 @@ namespace UI
         {
             foreach (var file in System.IO.Directory.GetFiles(path, "*.mp3"))
             {
-                var trackMetadata = File.Create(path);
-                tracks.Add(ExtractMetadata(trackMetadata, path));
+                var trackMetadata = File.Create(file);
+                tracks.Add(ExtractMetadata(trackMetadata, file));
             }
             DialogResult = true;
             Close();
         }
 
         public void ImportPlaylist(string path)
+        {
+
+        }
+
+        public void CreatePlaylist(object sender, RoutedEventArgs e)
         {
 
         }

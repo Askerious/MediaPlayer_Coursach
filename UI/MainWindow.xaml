@@ -20,7 +20,7 @@
         <ToolBar Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <Button Click="LoadTrack">Импорт</Button>
             <Separator/>
-            <Button>Создать плейлист</Button>
+            <Button >Создать плейлист</Button>
             <Separator/>
             <ComboBox Width="180" ItemsSource="{Binding Playlists}"
                       DisplayMemberPath="Name" SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}"/>
