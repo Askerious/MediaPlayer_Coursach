@@ -11,11 +11,8 @@ namespace Data.InMemory
     public class AudioTrackRepository : IAudioTrackRepository
     {
         private List<AudioTrack> _tracks;
+        public AudioTrackRepository() => _tracks = new List<AudioTrack>();
 
-        public AudioTrackRepository()
-        {
-            _tracks = new List<AudioTrack>();
-        }
         public int GetNextId()
         {
             int id = 0;

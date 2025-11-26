@@ -20,9 +20,10 @@
         <ToolBar Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <Button Click="LoadTrack">Импорт</Button>
             <Separator/>
-            <Button>Импорт Альбома</Button>
+            <Button>Создать плейлист</Button>
             <Separator/>
-            <Button>sdf</Button>
+            <ComboBox Width="180" ItemsSource="{Binding Playlists}"
+                      DisplayMemberPath="Name" SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}"/>
         </ToolBar>
 
         <!--
@@ -74,9 +75,9 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Image Name="nowPlayingCover" Width="200" Height="200"
                        Source="/Resources/default-cover.png" Margin="0 0 0 100"/>
-                <TextBlock Name="nowPlayingTitle" Text="No track selected"
+                <TextBlock Name="nowPlayingTitle" Text=""
                           FontWeight="Bold" FontSize="14" TextAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock Name="nowPlayingArtist" Text="Unknown Artist" 
+                <TextBlock Name="nowPlayingArtist" Text="" 
                           FontSize="12" Foreground="Gray" TextAlignment="Center" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>

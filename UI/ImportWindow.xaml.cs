@@ -1,6 +1,7 @@
 ﻿using Domain;
 using Microsoft.Win32;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -22,33 +23,66 @@ namespace UI
     public partial class ImportWindow : Window
     {
 
-        public AudioTrack track;
+        //public AudioTrack track;
+        public List<AudioTrack> tracks = new List<AudioTrack>();
 
         public ImportWindow()
         {
             InitializeComponent();
+            ImportBox.Items.Add("Файл");
+            ImportBox.Items.Add("Все файлы в папке");
+            ImportBox.Items.Add("Плейлист");
         }
 
-        public static AudioTrack Import()
+        public static List<AudioTrack> Import()   
         {
             var window = new ImportWindow();
-            return window.ShowDialog() == true ? window.track : null;
+            return window.ShowDialog() == true ? window.tracks : null;
         }
 
         public void Browse(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
-            if (ofd.ShowDialog() == true)
-                FileTextBox.Text = ofd.FileName;
+            var dlg = new 
+
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
+            //if (ofd.ShowDialog() == true)
+            //    FileTextBox.Text = ofd.FileName;
         }
 
         public void ImportButton(object sender, RoutedEventArgs e)
         {
-            var trackMetadata = File.Create(FileTextBox.Text);
-            track = ExtractMetadata(trackMetadata, FileTextBox.Text);
+            if (FileTextBox.Text == string.Empty) return;
+
+            if (ImportBox.Text == "Файл")
+                ImportSingleFile(FileTextBox.Text);
+            else if (ImportBox.Text == "Все файлы в папке")
+                ImportFolder(ImportBox.Text);
+            else if (FileTextBox.Text == "Плейлист") return;
+        }
+
+        public void ImportSingleFile(string path)
+        {
+            var trackMetadata = File.Create(path);
+            tracks.Add(ExtractMetadata(trackMetadata, path));
             DialogResult = true;
             Close();
+        }
+
+        public void ImportFolder(string path)
+        {
+            foreach (var file in System.IO.Directory.GetFiles(path, "*.mp3"))
+            {
+                var trackMetadata = File.Create(path);
+                tracks.Add(ExtractMetadata(trackMetadata, path));
+            }
+            DialogResult = true;
+            Close();
+        }
+
+        public void ImportPlaylist(string path)
+        {
+
         }
 
         public AudioTrack ExtractMetadata(File file, string path)

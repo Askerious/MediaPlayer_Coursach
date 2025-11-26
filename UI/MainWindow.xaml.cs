@@ -31,8 +31,10 @@ namespace UI
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        //public IAudioTrackRepository _trackRepository = new AudioTrackRepository();
+        public IPlaylistRepository _playlistRepository = new PlaylistRepository();
+
         public MediaPlayer player = new MediaPlayer();
-        public readonly IAudioTrackRepository _trackRepository = new AudioTrackRepository();
         public DispatcherTimer _timer;
         public bool isPlaying = false;
 
@@ -70,10 +72,42 @@ namespace UI
             }
         }
 
+        private Playlist _selectedPlaylist;
+        public Playlist SelectedPlaylist
+        {
+            get => _selectedPlaylist;
+            set
+            {
+                _selectedPlaylist = value;
+                OnPropertyChanged();
+                RefreshGrid();
+            }
+        }
+
+        public List<Playlist> _playlists;
+        public List<Playlist> Playlists
+        {
+            get => _playlists;
+            set
+            {
+                _playlists = value;
+                OnPropertyChanged();
+                RefreshGrid();
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
+
+            var all = new Playlist(12, "All");
+            var fav = new Playlist(12, "Favorites");
+
+            _playlistRepository.Add(all);
+            _playlistRepository.Add(fav);
+            Playlists = new List<Playlist>(_playlistRepository.GetAll());
+            SelectedPlaylist = Playlists.First(p => p.Name == "All");
 
             player.MediaOpened += Player_MediaOpened;
             player.MediaEnded += Player_MediaEnded;
@@ -150,15 +184,25 @@ namespace UI
         //importWindow
         public void LoadTrack(object sender, RoutedEventArgs e)
         {
-            AudioTrack track = ImportWindow.Import();
-            if (track != null)
-                _trackRepository.Add(track);
+            //AudioTrack track = ImportWindow.Import();
+            List<AudioTrack> tracks = ImportWindow.Import();
+            if (tracks != null)
+            {
+                var all = _playlistRepository.GetAll().First(p => p.Name == "All");
+                foreach (AudioTrack track in tracks)
+                {
+                    all.Tracks.Add(track);
+                    if (_selectedPlaylist != all)
+                        _selectedPlaylist.Tracks.Add(track);
+                }
+            }
             RefreshGrid();
         }
 
         public void RefreshGrid()
         {
-            trackListBox.ItemsSource = _trackRepository.GetAll();
+            if (_selectedPlaylist != null)
+                trackListBox.ItemsSource = _selectedPlaylist.GetAllTracks();
         }
     }
 }
