@@ -76,7 +76,7 @@ namespace UI
         {
             if (!System.IO.File.Exists(path))
             {
-                System.Windows.MessageBox.Show("Требуется путь до файла. Дебил");
+                System.Windows.MessageBox.Show("Требуется путь до файла");
                 return;
             }
 

@@ -24,6 +24,7 @@ namespace Data.InMemory
         public void Add(Playlist playlist)
         {
             var newPlaylist = new Playlist(playlist.UserId, playlist.Name);
+            newPlaylist.Tracks = playlist.Tracks;
             newPlaylist.Id = GetNextId();
             _playlists.Add(newPlaylist);
         }

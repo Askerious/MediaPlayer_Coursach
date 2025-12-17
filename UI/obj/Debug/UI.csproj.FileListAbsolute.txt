@@ -87,3 +87,6 @@ C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.
 C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
 C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.xml
 C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\mihaylovkv\source\repos\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\UI.exe.config
+C:\Users\mihaylovkv\source\repos\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\CreatePlaylistWindow.g.cs
+C:\Users\mihaylovkv\source\repos\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\CreatePlaylistWindow.baml

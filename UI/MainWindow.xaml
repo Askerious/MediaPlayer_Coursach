@@ -20,7 +20,7 @@
         <ToolBar Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <Button Click="LoadTrack">Импорт</Button>
             <Separator/>
-            <Button >Создать плейлист</Button>
+            <Button Click="CreatePlaylist">Создать плейлист</Button>
             <Separator/>
             <ComboBox Width="180" ItemsSource="{Binding Playlists}"
                       DisplayMemberPath="Name" SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}"/>
@@ -46,6 +46,15 @@
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListBox.ItemContainerStyle>
+
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="copyMenuItem" Header="Копировать" 
+                      Click="LoadTrack"/>
+                    <MenuItem Name="deleteMenuItem" Header="Удалить" 
+                      Click="LoadTrack"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
 
             <ListBox.ItemTemplate>
                 <DataTemplate>

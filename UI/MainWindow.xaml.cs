@@ -170,9 +170,7 @@ namespace UI
         public void TrackList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (trackListBox.SelectedItem is AudioTrack track)
-            {
                 UpdateCover(track);
-            }
         }
 
         public void UpdateCover(AudioTrack track)
@@ -199,10 +197,31 @@ namespace UI
             RefreshGrid();
         }
 
+        public void CreatePlaylist(object sender, RoutedEventArgs e)
+        {
+            Playlist res = CreatePlaylistWindow.CreatePlaylist(Playlists.First(p => p.Name == "All").GetAllTracks());
+            if (res != null)
+                _playlistRepository.Add(res);
+            RefreshBox();
+        }
+
+        public void DeleteTrack(object sender, RoutedEventArgs e)
+        {
+            if (trackListBox.SelectedItem != null)
+            {
+
+            }
+        }
+
         public void RefreshGrid()
         {
             if (_selectedPlaylist != null)
                 trackListBox.ItemsSource = _selectedPlaylist.GetAllTracks();
+        }
+
+        public void RefreshBox()
+        {
+            Playlists = _playlistRepository.GetAll().ToList();
         }
     }
 }

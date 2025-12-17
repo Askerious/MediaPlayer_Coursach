@@ -20,6 +20,7 @@ namespace Domain
             Tracks = new List<AudioTrack>();
         }
 
-        public List<AudioTrack> GetAllTracks() => Tracks.ToList(); 
+        public List<AudioTrack> GetAllTracks() => Tracks.ToList();
+        public void Add(AudioTrack track) => Tracks.Add(track);
     }
 }
