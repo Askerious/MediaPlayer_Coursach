@@ -32,6 +32,7 @@ namespace Data.InMemory
 
         public List<AudioTrack> GetAll(TrackFilter filter)
         {
+            /*
             var res = _tracks.AsEnumerable();
 
             if (filter.StartDate.HasValue)
@@ -39,7 +40,9 @@ namespace Data.InMemory
             if (filter.EndDate.HasValue)
                 res = res.Where(r => r.Date <= filter.EndDate.Value);
 
-            return res.ToList();
+            return res.ToList();*/
+
+            return _tracks.ToList();
         }
 
         public List<AudioTrack> GetAll()

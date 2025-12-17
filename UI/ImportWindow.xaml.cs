@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TagLib;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Windows.Interop;
 
 namespace UI
 {
@@ -45,7 +46,12 @@ namespace UI
         public void Browse(object sender, RoutedEventArgs e)
         {
             var dlg = new CommonOpenFileDialog();
-            dlg.IsFolderPicker = true;
+
+            if (ImportBox.Text == "Файл")
+                dlg.IsFolderPicker = false;
+            else
+                dlg.IsFolderPicker = true;
+
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
                 FileTextBox.Text = dlg.FileName;
 
@@ -68,6 +74,12 @@ namespace UI
 
         public void ImportSingleFile(string path)
         {
+            if (!System.IO.File.Exists(path))
+            {
+                System.Windows.MessageBox.Show("Требуется путь до файла. Дебил");
+                return;
+            }
+
             var trackMetadata = File.Create(path);
             tracks.Add(ExtractMetadata(trackMetadata, path));
             DialogResult = true;

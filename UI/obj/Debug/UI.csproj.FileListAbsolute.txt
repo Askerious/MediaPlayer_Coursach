@@ -83,3 +83,7 @@ C:\Users\mihaylovkv\source\repos\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug
 C:\Users\mihaylovkv\source\repos\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\UI.csproj.Up2Date
 C:\Users\mihaylovkv\source\repos\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\UI.exe
 C:\Users\mihaylovkv\source\repos\DeminCoursach\MediaPlayer_Coursach\UI\obj\Debug\UI.pdb
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\DeminCoursach\MediaPlayer_Coursach\UI\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
