@@ -11,5 +11,6 @@ namespace Data.Interfaces
     {
         void Add(Playlist p);
         List<Playlist> GetAll();
+        void RemovePlaylist(Playlist p);
     }
 }

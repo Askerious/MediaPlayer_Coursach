@@ -207,10 +207,57 @@ namespace UI
 
         public void DeleteTrack(object sender, RoutedEventArgs e)
         {
-            if (trackListBox.SelectedItem != null)
-            {
+            var Menu = sender as MenuItem;
+            AudioTrack track = null;
 
+            if (Menu != null)
+                track = Menu.CommandParameter as AudioTrack;
+
+            if (track != null)
+            {
+                _selectedPlaylist.Tracks.Remove(track);
+                RefreshGrid();
             }
+        }
+
+        public void AddToFavorites(object sender, RoutedEventArgs e)
+        {
+            var Menu = sender as MenuItem;
+            AudioTrack track = null;
+
+            if (Menu != null)
+                track = Menu.CommandParameter as AudioTrack;
+
+            if (track != null)
+            {
+                var fav = Playlists.FirstOrDefault(p => p.Name == "Favorites");
+                fav.Tracks.Add(track);
+                RefreshGrid();
+            }
+        }
+
+        public void AddToPlaylist(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void DeletePlaylist(object sender, RoutedEventArgs e)
+        {
+            if (_selectedPlaylist == null || _selectedPlaylist.Name == "All" || _selectedPlaylist.Name == "Favorites")
+            {
+                MessageBox.Show("Системные плейлисты нельзя удалить");
+                return;
+            }
+
+            var dlg = MessageBox.Show("Удалить плейлист?", "Потверждение", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            if (dlg == MessageBoxResult.Yes)
+            {
+                _playlistRepository.RemovePlaylist(_selectedPlaylist);
+                _selectedPlaylist = Playlists.First(p => p.Name == "All");
+            }
+
+            RefreshGrid();
+            RefreshBox();
         }
 
         public void RefreshGrid()

@@ -30,5 +30,6 @@ namespace Data.InMemory
         }
 
         public List<Playlist> GetAll() => _playlists;
+        public void RemovePlaylist(Playlist p) => _playlists.Remove(p);
     }
 }

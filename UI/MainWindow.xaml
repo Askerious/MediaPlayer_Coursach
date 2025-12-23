@@ -22,6 +22,8 @@
             <Separator/>
             <Button Click="CreatePlaylist">Создать плейлист</Button>
             <Separator/>
+            <Button Click="DeletePlaylist">Удалить плейлист</Button>
+            <Separator/>
             <ComboBox Width="180" ItemsSource="{Binding Playlists}"
                       DisplayMemberPath="Name" SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}"/>
         </ToolBar>
@@ -47,18 +49,19 @@
                 </Style>
             </ListBox.ItemContainerStyle>
 
-            <ListBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Name="copyMenuItem" Header="Копировать" 
-                      Click="LoadTrack"/>
-                    <MenuItem Name="deleteMenuItem" Header="Удалить" 
-                      Click="LoadTrack"/>
-                </ContextMenu>
-            </ListBox.ContextMenu>
-
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="6" Margin="2" BorderBrush="#DDD" BorderThickness="1">
+
+                        <Border.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Воспроизвести" Click="PlayMedia" CommandParameter="{Binding}"/>
+                                <MenuItem Header="Удалить" Click="DeleteTrack" CommandParameter="{Binding}"/>
+                                <Separator/>
+                                <MenuItem Header="Добавить в избранное" Click="AddToFavorites" CommandParameter="{Binding}"/>
+                            </ContextMenu>
+                        </Border.ContextMenu>
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40"/>
