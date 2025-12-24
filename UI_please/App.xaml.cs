@@ -12,16 +12,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TagLib;
+using UI_please;
 
 namespace UI
 {
-    /// <summary>
-    /// Логика взаимодействия для App.xaml
-    /// </summary>
     public partial class App : Application
     {
         public IAudioTrackRepository _trackRepository = null!;
         public IPlaylistRepository _playlistRepository = null!;
+        public IUserRepository _userRepository = null!;
         public MediaDbContext _dbContext = null!;
 
         protected override void OnStartup(StartupEventArgs e)
@@ -40,6 +39,10 @@ namespace UI
 
             _trackRepository = new AudioTrackRepository(db);
             _playlistRepository = new PlaylistRepository(db);
+            _userRepository = new UserRepository(db);
+
+            var login = new LoginWindow();
+            login.Show();
         }
 
         protected override void OnExit(ExitEventArgs e)
@@ -48,5 +51,4 @@ namespace UI
             base.OnExit(e);
         }
     }
-
 }

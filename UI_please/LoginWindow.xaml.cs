@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace UI_please
 {
-    /// <summary>
-    /// Логика взаимодействия для LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()

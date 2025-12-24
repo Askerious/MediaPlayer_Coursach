@@ -14,7 +14,7 @@ namespace Data.SqlServer
         public AudioTrackRepository(MediaDbContext ctx) => _ctx = ctx;
 
         public List<AudioTrack> GetAll() => _ctx.Tracks.AsQueryable().ToList();
-        public AudioTrack GetById(Guid id) => _ctx.Tracks.Find(id);
+        public AudioTrack GetById(int id) => _ctx.Tracks.Find(id);
 
         public void Add(AudioTrack track)
         {

@@ -253,8 +253,8 @@ namespace UI
 
             if (track != null)
             {
-                var fav = Playlists.FirstOrDefault(p => p.Name == "Favorites");
-                fav.Tracks.Add(track);
+                Playlist fav = Playlists.FirstOrDefault(p => p.Name == "Favorites");
+                _playlistRepository.AddTrackToPlaylist(fav.Id, track);
                 RefreshGrid();
             }
         }

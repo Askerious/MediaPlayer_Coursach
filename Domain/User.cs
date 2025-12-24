@@ -14,5 +14,14 @@ namespace Domain
 
         public List<Playlist> Playlists { get; set; }   
         public List<AudioTrack> Tracks { get; set; }
+
+        public User(int id, string username, string password, List<Playlist> playlists, List<AudioTrack> tracks)
+        {
+            Id = id;
+            Username = username;
+            Password = password;
+            Playlists = playlists;
+            Tracks = tracks;
+        }
     }
 }
