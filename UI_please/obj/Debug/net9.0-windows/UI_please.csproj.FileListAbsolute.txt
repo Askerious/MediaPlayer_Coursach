@@ -263,3 +263,5 @@ C:\DeminCoursach\MediaPlayer_Coursach\UI_please\bin\Debug\net9.0-windows\zh-Hans
 C:\DeminCoursach\MediaPlayer_Coursach\UI_please\bin\Debug\net9.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\DeminCoursach\MediaPlayer_Coursach\UI_please\obj\Debug\net9.0-windows\LoginWindow.g.cs
 C:\DeminCoursach\MediaPlayer_Coursach\UI_please\obj\Debug\net9.0-windows\LoginWindow.baml
+C:\DeminCoursach\MediaPlayer_Coursach\UI_please\obj\Debug\net9.0-windows\PaymentWindow.g.cs
+C:\DeminCoursach\MediaPlayer_Coursach\UI_please\obj\Debug\net9.0-windows\PaymentWindow.baml

@@ -57,8 +57,8 @@ namespace Data.SqlServer.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
+                    b.Property<string>("Duration")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
@@ -77,6 +77,40 @@ namespace Data.SqlServer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Tracks");
+                });
+
+            modelBuilder.Entity("Domain.Credentials", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CVV")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("expMonth")
+                        .HasColumnType("int");
+
+                    b.Property<int>("expYear")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Credentials");
                 });
 
             modelBuilder.Entity("Domain.Playlist", b =>
@@ -114,6 +148,9 @@ namespace Data.SqlServer.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isPayed")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -143,6 +180,17 @@ namespace Data.SqlServer.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Domain.Credentials", b =>
+                {
+                    b.HasOne("Domain.User", "User")
+                        .WithOne("Credentials")
+                        .HasForeignKey("Domain.Credentials", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Domain.Playlist", b =>
                 {
                     b.HasOne("Domain.User", "User")
@@ -154,6 +202,8 @@ namespace Data.SqlServer.Migrations
 
             modelBuilder.Entity("Domain.User", b =>
                 {
+                    b.Navigation("Credentials");
+
                     b.Navigation("Playlists");
 
                     b.Navigation("Tracks");

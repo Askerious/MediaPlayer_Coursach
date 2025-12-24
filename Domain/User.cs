@@ -11,6 +11,8 @@ namespace Domain
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public bool isPayed { get; set; }
+        public Credentials Credentials { get; set; }
 
         public List<Playlist> Playlists { get; set; }   
         public List<AudioTrack> Tracks { get; set; }

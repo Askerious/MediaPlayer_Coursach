@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\DeminCoursach\MediaPlayer_Coursach\UI_please\App.xaml
-41181515437
+52071063632
 
-71756478175
+8945535819
 25477033962
-CreatePlaylistWindow.xaml;ImportWindow.xaml;LoginWindow.xaml;MainWindow.xaml;
+CreatePlaylistWindow.xaml;ImportWindow.xaml;LoginWindow.xaml;MainWindow.xaml;PaymentWindow.xaml;
 
 False
 

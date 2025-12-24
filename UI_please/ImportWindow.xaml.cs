@@ -1,9 +1,11 @@
 ﻿using Domain;
 using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +16,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TagLib;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using System.Windows.Interop;
 
 namespace UI
 {
@@ -113,8 +114,11 @@ namespace UI
         {
             string title = file.Tag.Title;
             string artist = file.Tag.FirstPerformer;
-            int duration = (int)file.Properties.Duration.TotalSeconds;
             bool isFavorite = false;
+
+            string min = Math.Floor(file.Properties.Duration.TotalMinutes).ToString();
+            string sec = Math.Floor(file.Properties.Duration.TotalSeconds % 60).ToString();
+            string duration = $"{min}:{sec}";
 
             /*
             BitmapImage cover = null;

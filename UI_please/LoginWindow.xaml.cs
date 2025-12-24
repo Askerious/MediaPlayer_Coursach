@@ -37,10 +37,26 @@ namespace UI_please
                 MessageBox.Show("Неверный пароль");
                 return;
             }
-            
-            var main = new MainWindow(user);
-            main.Show();
-            Close();
+
+            app.CurrentUser = user;
+
+            if (!user.isPayed)
+            {
+                var payWindow = new PaymentWindow();
+                var res = payWindow.ShowDialog();
+                if (res != true || !user.isPayed) return;
+                else
+                {
+                    var main = new MainWindow(user);
+                    main.Show();
+                    Close();
+                }
+            } else
+            {
+                var main = new MainWindow(user);
+                main.Show();
+                Close();
+            }
         }
 
         public void RegestrationButtonClick(object sender, RoutedEventArgs e)
@@ -62,10 +78,6 @@ namespace UI_please
                 user = new User(username, password);
                 app._userRepository.Add(user);
             }
-
-            var main = new MainWindow(user);
-            main.Show();
-            Close();
         }
     }
 }

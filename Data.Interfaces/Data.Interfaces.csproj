@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAudioTrackRepository.cs" />
+    <Compile Include="IPaymentRepository.cs" />
     <Compile Include="IPlaylistRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

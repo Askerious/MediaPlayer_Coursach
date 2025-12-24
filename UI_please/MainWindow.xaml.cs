@@ -57,8 +57,8 @@ namespace UI
             }
         }
 
-        private double _duration;
-        public double Duration
+        private string _duration;
+        public string Duration
         {
             get => _duration;
             set
@@ -140,9 +140,13 @@ namespace UI
         public void Player_MediaOpened(object sender, EventArgs e)
         {
             if (player.NaturalDuration.HasTimeSpan)
-                Duration = player.NaturalDuration.TimeSpan.TotalSeconds;
+            {
+                string min = Math.Floor(player.NaturalDuration.TimeSpan.TotalMinutes).ToString();
+                string sec = Math.Floor(player.NaturalDuration.TimeSpan.TotalSeconds % 60).ToString();
+                Duration = $"{min}:{sec}";
+            }
             else
-                Duration = 0;
+                Duration = "0";
         }
         
         public void Player_MediaEnded(object sender, EventArgs e)

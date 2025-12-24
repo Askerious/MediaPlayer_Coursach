@@ -23,6 +23,7 @@ namespace UI
         public IAudioTrackRepository _trackRepository = null!;
         public IPlaylistRepository _playlistRepository = null!;
         public IUserRepository _userRepository = null!;
+        public IPaymentRepository _paymentRepository = null!;
         public User CurrentUser = null!;
         public MediaDbContext _dbContext = null!;
 
@@ -43,6 +44,7 @@ namespace UI
             _trackRepository = new AudioTrackRepository(db);
             _playlistRepository = new PlaylistRepository(db);
             _userRepository = new UserRepository(db);
+            _paymentRepository = new PaymentRepository(db);
 
             if (!_dbContext.Users.Any(u => u.Username == "askerious"))
                 _userRepository.Add(new User("askerious", "123"));
