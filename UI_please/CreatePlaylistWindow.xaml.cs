@@ -19,6 +19,7 @@ namespace UI
     {
         public Playlist playlist;
         public static List<AudioTrack> _source;
+        public static User _user;
 
         public CreatePlaylistWindow()
         {
@@ -26,16 +27,17 @@ namespace UI
             trackListBox.ItemsSource = _source;
         }
 
-        public static Playlist CreatePlaylist(List<AudioTrack> source)
+        public static Playlist CreatePlaylist(List<AudioTrack> source, User user)
         {
             _source = source;
+            _user = user;
             var window = new CreatePlaylistWindow();
             return window.ShowDialog() == true ? window.playlist : null;
         }
 
         public void CreatePlaylistButton(object sender, RoutedEventArgs e)
         {
-            playlist = new Playlist(123, PlaylistNameBox.Text);
+            playlist = new Playlist(_user.Id, PlaylistNameBox.Text);
             foreach (AudioTrack track in trackListBox.SelectedItems)
                 playlist.Tracks.Add(track);
 

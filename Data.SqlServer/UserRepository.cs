@@ -2,6 +2,7 @@
 using Domain;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,12 @@ namespace Data.SqlServer
 
         public List<User> GetAll() => _ctx.Users.ToList();
         public User GetById(int id) => _ctx.Users.Find(id);
+        public User GetByName(string username)
+        {
+            var u = _ctx.Users.Where(x => x.Username == username).FirstOrDefault();
+            if (u == null) return null;
+            return u;
+        }
 
         public bool CheckPassword(string username, string password)
         {

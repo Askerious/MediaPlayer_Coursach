@@ -11,6 +11,7 @@ namespace Data.Interfaces
     {
         List<User> GetAll();
         User GetById(int id);
+        User GetByName(string username);
         bool CheckPassword(string username, string password);
         void Add(User user);
         void Delete(int id);

@@ -21,6 +21,11 @@ namespace Data.SqlServer
 
             modelBuilder.Entity<Playlist>().HasMany(p => p.Tracks)
                 .WithMany();
+
+            modelBuilder.Entity<AudioTrack>().HasOne(t => t.User)
+                .WithMany(p => p.Tracks)
+                .HasForeignKey(u => u.UserId)
+                .IsRequired(false);
         }
     }
 }

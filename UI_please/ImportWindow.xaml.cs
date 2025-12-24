@@ -28,6 +28,7 @@ namespace UI
 
         //public AudioTrack track;
         public List<AudioTrack> tracks = new List<AudioTrack>();
+        public static int _userId;
 
         public ImportWindow()
         {
@@ -37,9 +38,10 @@ namespace UI
             ImportBox.Items.Add("Плейлист");
         }
 
-        public static List<AudioTrack> Import()   
+        public static List<AudioTrack> Import(int userId)   
         {
             var window = new ImportWindow();
+            _userId = userId;
             return window.ShowDialog() == true ? window.tracks : null;
         }
 
@@ -66,13 +68,13 @@ namespace UI
             if (FileTextBox.Text == string.Empty) return;
 
             if (ImportBox.Text == "Файл")
-                ImportSingleFile(FileTextBox.Text);
+                ImportSingleFile(FileTextBox.Text, _userId);
             else if (ImportBox.Text == "Все файлы в папке")
-                ImportFolder(FileTextBox.Text);
+                ImportFolder(FileTextBox.Text, _userId);
             else if (FileTextBox.Text == "Плейлист") return;
         }
 
-        public void ImportSingleFile(string path)
+        public void ImportSingleFile(string path, int userId)
         {
             if (!System.IO.File.Exists(path))
             {
@@ -81,17 +83,17 @@ namespace UI
             }
 
             var trackMetadata = File.Create(path);
-            tracks.Add(ExtractMetadata(trackMetadata, path));
+            tracks.Add(ExtractMetadata(trackMetadata, path, userId));
             DialogResult = true;
             Close();
         }
 
-        public void ImportFolder(string path)
+        public void ImportFolder(string path, int userId)
         {
             foreach (var file in System.IO.Directory.GetFiles(path, "*.mp3"))
             {
                 var trackMetadata = File.Create(file);
-                tracks.Add(ExtractMetadata(trackMetadata, file));
+                tracks.Add(ExtractMetadata(trackMetadata, file, userId));
             }
             DialogResult = true;
             Close();
@@ -107,7 +109,7 @@ namespace UI
 
         }
 
-        public AudioTrack ExtractMetadata(File file, string path)
+        public AudioTrack ExtractMetadata(File file, string path, int userId)
         {
             string title = file.Tag.Title;
             string artist = file.Tag.FirstPerformer;
@@ -137,7 +139,7 @@ namespace UI
                 cover = pic.Data?.ToArray();
             }
 
-            return new AudioTrack(title, artist, cover, duration, isFavorite, path);
+            return new AudioTrack(title, artist, cover, duration, isFavorite, path, userId);
         }
     }
 }

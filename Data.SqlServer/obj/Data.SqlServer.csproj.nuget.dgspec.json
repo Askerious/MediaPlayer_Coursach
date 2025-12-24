@@ -1,98 +1,66 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj": {}
+    "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj": {
+    "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj",
+        "projectUniqueName": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj",
         "projectName": "Data.InMemory",
-        "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj",
-        "packagesPath": "C:\\Users\\mihaylovkv\\.nuget\\packages\\",
-        "projectStyle": "PackagesConfig",
+        "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj",
         "UsingMicrosoftNETSdk": false,
-        "configFilePaths": [
-          "\\\\iscsi\\profstud\\mihaylovkv\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj": {
-                "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj"
+              "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj": {
+                "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj"
               },
-              "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj"
+              "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj"
               }
             }
           }
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low"
-        },
-        "packagesConfigPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.InMemory\\packages.config"
+        }
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj": {
+    "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj",
+        "projectUniqueName": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj",
         "projectName": "Data.Interfaces",
-        "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj",
-        "packagesPath": "C:\\Users\\mihaylovkv\\.nuget\\packages\\",
-        "projectStyle": "PackagesConfig",
+        "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.Interfaces\\Data.Interfaces.csproj",
         "UsingMicrosoftNETSdk": false,
-        "configFilePaths": [
-          "\\\\iscsi\\profstud\\mihaylovkv\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj"
+              "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj"
               }
             }
           }
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low"
-        },
-        "packagesConfigPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.Interfaces\\packages.config"
+        }
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj": {
+    "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj",
+        "projectUniqueName": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj",
         "projectName": "Data.SqlServer",
-        "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj",
-        "packagesPath": "C:\\Users\\mihaylovkv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.SqlServer\\obj\\",
+        "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.SqlServer\\Data.SqlServer.csproj",
+        "packagesPath": "C:\\Users\\Linuxbetter\\.nuget\\packages\\",
+        "outputPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.SqlServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "\\\\iscsi\\profstud\\mihaylovkv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Linuxbetter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -101,18 +69,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj": {
-                "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj"
+              "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj": {
+                "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Data.InMemory\\Data.InMemory.csproj"
               },
-              "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj"
+              "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj"
               }
             }
           }
@@ -172,33 +139,17 @@
         }
       }
     },
-    "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
+    "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\mihaylovkv\\.nuget\\packages\\",
-        "projectStyle": "PackagesConfig",
+        "projectPath": "C:\\DeminCoursach\\MediaPlayer_Coursach\\Domain\\Domain.csproj",
         "UsingMicrosoftNETSdk": false,
-        "configFilePaths": [
-          "\\\\iscsi\\profstud\\mihaylovkv\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net472": {
             "projectReferences": {}
           }
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low"
-        },
-        "packagesConfigPath": "C:\\Users\\mihaylovkv\\source\\repos\\MediaPlayer_Coursach\\Domain\\packages.config"
+        }
       },
       "frameworks": {
         "net472": {}

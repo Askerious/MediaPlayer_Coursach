@@ -19,7 +19,11 @@ namespace Domain
         public string FilePath { get; set; }
         public DateTime Date { get; set; }
 
-        public AudioTrack(string title, string artist, byte[] cover, int duration, bool isFavorite, string filePath)
+        public int? UserId { get; set; }
+        public User User { get; set; } = null;
+
+        public AudioTrack() { }
+        public AudioTrack(string title, string artist, byte[] cover, int duration, bool isFavorite, string filePath, int userId)
         {
             Title = title;
             Artist = artist;
@@ -28,6 +32,7 @@ namespace Domain
             IsFavorite = isFavorite;
             FilePath = filePath;
             Date = DateTime.Now;
+            UserId = userId;
         }
     }
 }

@@ -10,10 +10,13 @@ namespace Domain
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
+        public User User { get; set; } = null;
         public List<AudioTrack> Tracks { get; set; }
 
-        public Playlist(int userId, string name)
+        public Playlist() { }
+
+        public Playlist(int? userId, string name)
         {
             UserId = userId;
             Name = name;

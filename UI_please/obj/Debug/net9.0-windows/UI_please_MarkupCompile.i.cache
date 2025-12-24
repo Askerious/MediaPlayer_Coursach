@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\UI_please\obj\Debug\net9.0-windows\
+C:\DeminCoursach\MediaPlayer_Coursach\UI_please\obj\Debug\net9.0-windows\
 UI_please
 none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\mihaylovkv\source\repos\MediaPlayer_Coursach\UI_please\App.xaml
+C:\DeminCoursach\MediaPlayer_Coursach\UI_please\App.xaml
 41181515437
 
 91311598960
-254-360124650
+25477033962
 CreatePlaylistWindow.xaml;ImportWindow.xaml;LoginWindow.xaml;MainWindow.xaml;
 
-False
+True
 

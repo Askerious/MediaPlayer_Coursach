@@ -36,6 +36,8 @@ namespace UI
     {
         public IAudioTrackRepository _trackRepository;
         public IPlaylistRepository _playlistRepository;
+        public IUserRepository _userRepository;
+        public User _user;
         public MediaDbContext db;
 
         public MediaPlayer player = new MediaPlayer();
@@ -100,7 +102,7 @@ namespace UI
             }
         }
 
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
             DataContext = this;
@@ -108,17 +110,19 @@ namespace UI
             var app = (App)Application.Current;
             _playlistRepository = app._playlistRepository;
             _trackRepository = app._trackRepository;
+            _userRepository = app._userRepository;
+            _user = user;
             db = app._dbContext;
 
-            if (!db.Playlists.Any(p => p.Name == "All") || !db.Playlists.Any(p => p.Name == "Favorites"))
+            if (!db.Playlists.Any(p => (p.Name == "All" && p.UserId == _user.Id)) || !db.Playlists.Any(p => (p.Name == "Favorites" && p.UserId == _user.Id)))
             {
-                var all = new Playlist(12, "All");
-                var fav = new Playlist(12, "Favorites");
+                var all = new Playlist(_user.Id, "All");
+                var fav = new Playlist(_user.Id, "Favorites");
                 _playlistRepository.Add(all);
                 _playlistRepository.Add(fav);
             }
 
-            Playlists = _playlistRepository.GetAll();
+            Playlists = _playlistRepository.GetAll().Where(u => u.UserId == _user.Id).ToList();
             SelectedPlaylist = Playlists.First(p => p.Name == "All");
 
             player.MediaOpened += Player_MediaOpened;
@@ -204,7 +208,7 @@ namespace UI
 
         public void LoadTrack(object sender, RoutedEventArgs e)
         {
-            List<AudioTrack> tracks = ImportWindow.Import();
+            List<AudioTrack> tracks = ImportWindow.Import(_user.Id);
             if (tracks != null)
             {
                 var all = Playlists.First(p => p.Name == "All");
@@ -222,7 +226,7 @@ namespace UI
 
         public void CreatePlaylist(object sender, RoutedEventArgs e)
         {
-            Playlist res = CreatePlaylistWindow.CreatePlaylist(Playlists.First(p => p.Name == "All").GetAllTracks());
+            Playlist res = CreatePlaylistWindow.CreatePlaylist(Playlists.First(p => p.Name == "All").GetAllTracks(), _user);
             if (res != null)
                 _playlistRepository.Add(res);
             RefreshBox();

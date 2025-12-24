@@ -1,5 +1,6 @@
 ﻿using Data.Interfaces;
 using Data.SqlServer;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using TagLib;
@@ -21,6 +23,7 @@ namespace UI
         public IAudioTrackRepository _trackRepository = null!;
         public IPlaylistRepository _playlistRepository = null!;
         public IUserRepository _userRepository = null!;
+        public User CurrentUser = null!;
         public MediaDbContext _dbContext = null!;
 
         protected override void OnStartup(StartupEventArgs e)
@@ -40,6 +43,9 @@ namespace UI
             _trackRepository = new AudioTrackRepository(db);
             _playlistRepository = new PlaylistRepository(db);
             _userRepository = new UserRepository(db);
+
+            if (!_dbContext.Users.Any(u => u.Username == "askerious"))
+                _userRepository.Add(new User("askerious", "123"));
 
             var login = new LoginWindow();
             login.Show();
