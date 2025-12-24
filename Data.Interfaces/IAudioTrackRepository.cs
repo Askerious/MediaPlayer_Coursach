@@ -12,7 +12,6 @@ namespace Data.Interfaces
     public interface IAudioTrackRepository
     {
         void Add(AudioTrack track);
-        //List<AudioTrack> GetAll(); 
-        List<AudioTrack> GetAll(TrackFilter filter);
+        List<AudioTrack> GetAll();
     }
 }

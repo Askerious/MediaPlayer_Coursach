@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
-using System.Windows.Media.Imaging;
 
 namespace Domain
 {
@@ -14,13 +13,13 @@ namespace Domain
         public string Title { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
-        public BitmapImage Cover { get; set; }
+        public byte[] Cover { get; set; }
         public int Duration { get; set; }
         public bool IsFavorite { get; set; }
         public string FilePath { get; set; }
         public DateTime Date { get; set; }
 
-        public AudioTrack(string title, string artist, BitmapImage cover, int duration, bool isFavorite, string filePath)
+        public AudioTrack(string title, string artist, byte[] cover, int duration, bool isFavorite, string filePath)
         {
             Title = title;
             Artist = artist;

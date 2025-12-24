@@ -9,8 +9,8 @@ namespace Domain
     public class Playlist
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public int UserId { get; set; }
-        public string Name {  get; set; }
         public List<AudioTrack> Tracks { get; set; }
 
         public Playlist(int userId, string name)

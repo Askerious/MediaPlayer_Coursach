@@ -12,6 +12,8 @@ namespace Data.InMemory
     {
         public List<Playlist> _playlists;
         public PlaylistRepository() => _playlists = new List<Playlist>();
+        public Playlist GetById(int id) => _playlists.Find(p => p.Id == id);
+        public List<Playlist> GetAll() => _playlists;
 
         public int GetNextId()
         {
@@ -29,7 +31,16 @@ namespace Data.InMemory
             _playlists.Add(newPlaylist);
         }
 
-        public List<Playlist> GetAll() => _playlists;
-        public void RemovePlaylist(Playlist p) => _playlists.Remove(p);
+        public void RemovePlaylist(int id)
+        {
+            var plt = _playlists.Find(p => p.Id == id);
+        }
+
+        public void AddTrackToPlaylist(int id, AudioTrack track)
+        {
+            var playlist = GetById(id);
+            playlist.Tracks.Add(track);
+        }
+        
     }
 }
