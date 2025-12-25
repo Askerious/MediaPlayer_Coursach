@@ -26,6 +26,7 @@ namespace UI
         public IPaymentRepository _paymentRepository = null!;
         public User CurrentUser = null!;
         public MediaDbContext _dbContext = null!;
+        public string RootDirectory = null!;
 
         protected override void OnStartup(StartupEventArgs e)
         {

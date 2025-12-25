@@ -26,7 +26,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using TagLib;
 
@@ -34,6 +33,7 @@ namespace UI
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public App _App;
         public IAudioTrackRepository _trackRepository;
         public IPlaylistRepository _playlistRepository;
         public IUserRepository _userRepository;
@@ -64,6 +64,17 @@ namespace UI
             set
             {
                 _duration = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _durationSeconds;
+        public double DurationSeconds
+        {
+            get => _durationSeconds;
+            set
+            {
+                _durationSeconds = value;
                 OnPropertyChanged();
             }
         }
@@ -108,6 +119,7 @@ namespace UI
             DataContext = this;
 
             var app = (App)Application.Current;
+            _App = app;
             _playlistRepository = app._playlistRepository;
             _trackRepository = app._trackRepository;
             _userRepository = app._userRepository;
@@ -144,8 +156,10 @@ namespace UI
                 string min = Math.Floor(player.NaturalDuration.TimeSpan.TotalMinutes).ToString();
                 string sec = Math.Floor(player.NaturalDuration.TimeSpan.TotalSeconds % 60).ToString();
                 Duration = $"{min}:{sec}";
+                DurationSeconds = player.NaturalDuration.TimeSpan.TotalSeconds;
             }
             else
+                DurationSeconds = 0;
                 Duration = "0";
         }
         
@@ -160,7 +174,7 @@ namespace UI
             if (player.NaturalDuration.HasTimeSpan)
                 Position = player.Position.TotalSeconds;
         }
-
+        
         public void PlayMedia(object sender, EventArgs e)
         {
             if (!(trackListBox.SelectedItem is AudioTrack track)) return;
@@ -170,7 +184,8 @@ namespace UI
                 if (player.Source == null || !player.Source.OriginalString.Equals(track.FilePath))
                 {
                     player.Stop();
-                    player.Open(new Uri(track.FilePath));
+                    string path = Path.Combine(_App.RootDirectory, track.FilePath);
+                    player.Open(new Uri(path));
                 }
 
                 player.Play();
@@ -212,7 +227,7 @@ namespace UI
 
         public void LoadTrack(object sender, RoutedEventArgs e)
         {
-            List<AudioTrack> tracks = ImportWindow.Import(_user.Id);
+            List<AudioTrack> tracks = ImportWindow.Import(_user.Id, _user.Username, _App.RootDirectory);
             if (tracks != null)
             {
                 var all = Playlists.First(p => p.Name == "All");

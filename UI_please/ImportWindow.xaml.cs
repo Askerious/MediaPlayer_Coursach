@@ -19,8 +19,9 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TagLib;
+using System.IO;
+using File = TagLib.File;
 
 namespace UI
 {
@@ -29,7 +30,9 @@ namespace UI
 
         //public AudioTrack track;
         public List<AudioTrack> tracks = new List<AudioTrack>();
+        public static string _username;
         public static int _userId;
+        public static string _rootDirectory;
 
         public ImportWindow()
         {
@@ -39,10 +42,12 @@ namespace UI
             ImportBox.Items.Add("Плейлист");
         }
 
-        public static List<AudioTrack> Import(int userId)   
+        public static List<AudioTrack> Import(int userId, string username, string dir)   
         {
             var window = new ImportWindow();
             _userId = userId;
+            _username = username;
+            _rootDirectory = dir;
             return window.ShowDialog() == true ? window.tracks : null;
         }
 
@@ -91,7 +96,7 @@ namespace UI
 
         public void ImportFolder(string path, int userId)
         {
-            foreach (var file in System.IO.Directory.GetFiles(path, "*.mp3"))
+            foreach (var file in Directory.GetFiles(path, "*.mp3"))
             {
                 var trackMetadata = File.Create(file);
                 tracks.Add(ExtractMetadata(trackMetadata, file, userId));
@@ -120,6 +125,9 @@ namespace UI
             string sec = Math.Floor(file.Properties.Duration.TotalSeconds % 60).ToString();
             string duration = $"{min}:{sec}";
 
+            string pathName = Path.GetFileName(path);
+            System.IO.File.Copy(path, Path.Combine(_rootDirectory, pathName), overwrite: true);
+
             /*
             BitmapImage cover = null;
             if (file.Tag.Pictures.Length > 0)
@@ -143,7 +151,7 @@ namespace UI
                 cover = pic.Data?.ToArray();
             }
 
-            return new AudioTrack(title, artist, cover, duration, isFavorite, path, userId);
+            return new AudioTrack(title, artist, cover, duration, isFavorite, pathName, userId);
         }
     }
 }

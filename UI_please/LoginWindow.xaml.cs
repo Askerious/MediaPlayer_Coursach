@@ -1,6 +1,7 @@
 ﻿using Domain;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using UI;
+using Path = System.IO.Path;
 
 namespace UI_please
 {
@@ -40,6 +42,11 @@ namespace UI_please
 
             app.CurrentUser = user;
 
+            var tracksRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MediaPlayerCoursach", "tracks", user.Username);
+            if (!Directory.Exists(tracksRoot))
+                Directory.CreateDirectory(tracksRoot);
+            app.RootDirectory = tracksRoot;
+
             if (!user.isPayed)
             {
                 var payWindow = new PaymentWindow();
@@ -66,17 +73,30 @@ namespace UI_please
             string username = null;
             string password = null;
             User user = null;
-            
-            if (!(UsernameBox.Text == string.Empty) && !(PasswordBox.Password == string.Empty))
+
+            if ((UsernameBox.Text == string.Empty) && (PasswordBox.Password == string.Empty))
             {
-                username = UsernameBox.Text;
-                password = PasswordBox.Password;
+                MessageBox.Show("Неверные данные");
             }
 
+            username = UsernameBox.Text;
+            password = PasswordBox.Password;
+            
             if (!app._dbContext.Users.Any(u => u.Username == username))
             {
                 user = new User(username, password);
                 app._userRepository.Add(user);
+                app.CurrentUser = user;
+
+                var payWindow = new PaymentWindow();
+                var res = payWindow.ShowDialog();
+                if (res != true || !user.isPayed) return;
+                else
+                {
+                    var main = new MainWindow(user);
+                    main.Show();
+                    Close();
+                }
             }
         }
     }

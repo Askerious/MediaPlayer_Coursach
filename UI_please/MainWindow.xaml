@@ -76,7 +76,7 @@
                                 <TextBlock Text="{Binding Artist}" FontSize="12" Foreground="Gray" TextTrimming="CharacterEllipsis"/>
                             </StackPanel>
 
-                            <TextBlock Grid.Column="2" Text="{Binding Duration}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                            <TextBlock Grid.Column="2" Text="{Binding DurationSeconds}" VerticalAlignment="Center" HorizontalAlignment="Right" />
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -107,7 +107,7 @@
 
             <Slider Name = "PositionSlider"
                     Minimum="0"
-                    Maximum="{Binding Duration}"
+                    Maximum="{Binding DurationSeconds}"
                     Value="{Binding Position, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     IsMoveToPointEnabled="True"
                 Grid.Column="1" VerticalAlignment="Center" Margin="5"/>
